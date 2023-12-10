@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+  template="/WEB-INF/template/Layout.xhtml"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:p="http://primefaces.org/ui"
+>
+  <ui:define name="titulo">Empresas</ui:define>
+  <ui:define name="corpo">
+    <h:body>
+      <h2>Empresas</h2>
+      <h:form style="display: flex; flex-direction: column">
+        <h:dataTable
+          style="margin: 10px; width: max-content"
+          value="#{listarEmpresasBean.empresas}"
+          var="empresa"
+          border="1"
+          cellspacing="0"
+          cellpadding="2"
+        >
+          <h:column>
+            <f:facet name="header">
+              <h:outputText value="Nome" />
+            </f:facet>
+            <h:outputText value="#{empresa.nome}" />
+          </h:column>
+          <h:column>
+            <f:facet name="header">
+              <h:outputText value="Endereço" />
+            </f:facet>
+            <h:outputText value="#{empresa.endereco}" />
+          </h:column>
+          <h:column>
+            <f:facet name="header">
+              <h:outputText value="CNPJ" />
+            </f:facet>
+            <h:outputText value="#{empresa.cnpj}" />
+          </h:column>
+          <h:column>
+            <f:facet name="header">
+              <h:outputText value="Opções" />
+            </f:facet>
+            <h:commandButton
+              value="Editar"
+              action="#{listarEmpresasBean.editar(empresa.id)}"
+            />
+            <h:commandButton
+              value="Excluir"
+              action="#{listarEmpresasBean.excluir(empresa)}"
+            >
+            </h:commandButton>
+          </h:column>
+        </h:dataTable>
+
+        <h:commandLink
+          style="margin: 10px"
+          value="Cadastrar empresa"
+          action="cadastro-empresa?faces-redirect=true"
+        />
+        <br />
+      </h:form>
+    </h:body>
+  </ui:define>
+</ui:composition>

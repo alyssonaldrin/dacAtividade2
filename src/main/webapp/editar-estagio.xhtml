@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+  template="/WEB-INF/template/Layout.xhtml"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:p="http://primefaces.org/ui"
+>
+  <ui:define name="titulo">Editar estágio</ui:define>
+  <ui:define name="corpo">
+    <h2>Editar Estágio</h2>
+    <h:form id="frm">
+      <p:messages showDetail="false" showSummary="true" />
+      <p:panelGrid columns="2">
+        <h:outputLabel value="Aluno" />
+        <p:selectOneMenu value="#{editarEstagioBean.idAluno}" label="Aluno">
+          <f:selectItem itemLabel="Selecionar Aluno" noSelectionOption="true" />
+          <f:selectItems
+            value="#{editarEstagioBean.alunos}"
+            var="aluno"
+            itemValue="#{aluno.id}"
+            itemLabel="#{aluno.nome}"
+          />
+        </p:selectOneMenu>
+        <h:outputLabel value="Empresa" />
+        <p:selectOneMenu value="#{editarEstagioBean.idEmpresa}" label="Empresa">
+          <f:selectItem
+            itemLabel="Selecionar Empresa"
+            noSelectionOption="true"
+          />
+          <f:selectItems
+            value="#{editarEstagioBean.empresas}"
+            var="empresa"
+            itemValue="#{empresa.id}"
+            itemLabel="#{empresa.nome}"
+          />
+        </p:selectOneMenu>
+        <h:outputLabel value="Orientador" />
+        <p:selectOneMenu
+          value="#{editarEstagioBean.idOrientador}"
+          label="Orientador"
+        >
+          <f:selectItem
+            itemLabel="Selecionar Orientador"
+            noSelectionOption="true"
+          />
+          <f:selectItems
+            value="#{editarEstagioBean.orientadores}"
+            var="orientador"
+            itemValue="#{orientador.id}"
+            itemLabel="#{orientador.nome}"
+          />
+        </p:selectOneMenu>
+        <h:outputLabel value="Data Início" />
+        <p:inputText
+          size="10"
+          value="#{editarEstagioBean.estagio.inicioEstagio}"
+          label="Data Início"
+        >
+          <f:convertDateTime pattern="dd/MM/yyyy" />
+        </p:inputText>
+        <h:outputLabel value="Data Fim" />
+        <p:inputText
+          size="10"
+          value="#{editarEstagioBean.estagio.fimEstagio}"
+          label="Data Fim"
+        >
+          <f:convertDateTime pattern="dd/MM/yyyy" />
+        </p:inputText>
+        <h:outputLabel value="Carga Horária" />
+        <p:inputText
+          size="60"
+          value="#{editarEstagioBean.estagio.cargaHoraria}"
+          label="Carga Horária"
+          type="number"
+        />
+        <h:outputLabel value="Status" />
+        <p:selectOneMenu
+          value="#{editarEstagioBean.estagio.status}"
+          label="Status"
+        >
+          <f:selectItem itemLabel="Em Andamento" itemValue="Em Andamento" />
+          <f:selectItem itemLabel="Finalizado" itemValue="Finalizado" />
+        </p:selectOneMenu>
+      </p:panelGrid>
+      <div style="display: flex; margin: 10px; gap: 10px; align-items: center">
+        <h:commandButton value="Salvar" action="#{editarEstagioBean.editar}" />
+        <h:commandLink
+          value="Voltar para home"
+          action="index?faces-redirect=true"
+        />
+      </div>
+    </h:form>
+  </ui:define>
+</ui:composition>

@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+  template="/WEB-INF/template/Layout.xhtml"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:p="http://primefaces.org/ui"
+>
+  <ui:define name="titulo">Avaliação da Empresa</ui:define>
+  <ui:define name="corpo">
+    <h2>Avaliação da Empresa</h2>
+    <h:form id="frm">
+      <p:messages showDetail="false" showSummary="true" />
+      <p:panelGrid columns="2">
+        <h:outputLabel
+          value="Rendimento de Trabalho - qualidade de trabalho tendo em vista o padrão exigido para o estagiário"
+        />
+        <p:selectOneMenu
+          value="#{avaliacaoDaEmpresaBean.avaliacaoDaEmpresa.rendimentoDeTrabalho}"
+          label="Rendimento de Trabalho"
+        >
+          <f:selectItem itemLabel="Insuficiente" itemValue="Insuficiente" />
+          <f:selectItem itemLabel="Regular" itemValue="Regular" />
+          <f:selectItem itemLabel="Bom" itemValue="Bom" />
+          <f:selectItem itemLabel="Muito Bom" itemValue="Muito Bom" />
+        </p:selectOneMenu>
+        <h:outputLabel
+          value="Conhecimentos - domínio demonstrado no desempenho de atividades atribuídas pela empresa"
+        />
+        <p:selectOneMenu
+          value="#{avaliacaoDaEmpresaBean.avaliacaoDaEmpresa.conhecimentos}"
+          label="Conhecimentos"
+        >
+          <f:selectItem itemLabel="Insuficiente" itemValue="Insuficiente" />
+          <f:selectItem itemLabel="Regular" itemValue="Regular" />
+          <f:selectItem itemLabel="Bom" itemValue="Bom" />
+          <f:selectItem itemLabel="Muito Bom" itemValue="Muito Bom" />
+        </p:selectOneMenu>
+        <h:outputLabel
+          value="Cumprimento das Tarefas - segurança, precisão e diligência com as quais executa as tarefas"
+        />
+        <p:selectOneMenu
+          value="#{avaliacaoDaEmpresaBean.avaliacaoDaEmpresa.cumprimentoDasTarefas}"
+          label="Cumprimento das Tarefas"
+        >
+          <f:selectItem itemLabel="Insuficiente" itemValue="Insuficiente" />
+          <f:selectItem itemLabel="Regular" itemValue="Regular" />
+          <f:selectItem itemLabel="Bom" itemValue="Bom" />
+          <f:selectItem itemLabel="Muito Bom" itemValue="Muito Bom" />
+        </p:selectOneMenu>
+        <h:outputLabel
+          value="Aprendizagem - capacidade para assimilar novos conhecimentos, necessários no desempenho de suas tarefas"
+        />
+        <p:selectOneMenu
+          value="#{avaliacaoDaEmpresaBean.avaliacaoDaEmpresa.aprendizagem}"
+          label="Aprendizagem"
+        >
+          <f:selectItem itemLabel="Insuficiente" itemValue="Insuficiente" />
+          <f:selectItem itemLabel="Regular" itemValue="Regular" />
+          <f:selectItem itemLabel="Bom" itemValue="Bom" />
+          <f:selectItem itemLabel="Muito Bom" itemValue="Muito Bom" />
+        </p:selectOneMenu>
+        <h:outputLabel
+          value="Desempenho - iniciativa para encontrar soluções necessárias ao desenvolvimento de suas atividades"
+        />
+        <p:selectOneMenu
+          value="#{avaliacaoDaEmpresaBean.avaliacaoDaEmpresa.desempenho}"
+          label="Desempenho"
+        >
+          <f:selectItem itemLabel="Insuficiente" itemValue="Insuficiente" />
+          <f:selectItem itemLabel="Regular" itemValue="Regular" />
+          <f:selectItem itemLabel="Bom" itemValue="Bom" />
+          <f:selectItem itemLabel="Muito Bom" itemValue="Muito Bom" />
+        </p:selectOneMenu>
+      </p:panelGrid>
+      <div style="display: flex; margin: 10px; gap: 10px; align-items: center">
+        <h:commandButton
+          value="Salvar"
+          action="#{avaliacaoDaEmpresaBean.salvar}"
+        />
+        <h:commandLink
+          value="Voltar para home"
+          action="index?faces-redirect=true"
+        />
+      </div>
+    </h:form>
+  </ui:define>
+</ui:composition>

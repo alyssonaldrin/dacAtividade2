@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+  template="/WEB-INF/template/Layout.xhtml"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://xmlns.jcp.org/jsf/core"
+  xmlns:h="http://xmlns.jcp.org/jsf/html"
+  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+  xmlns:p="http://primefaces.org/ui"
+>
+  <ui:define name="titulo">Estagios</ui:define>
+  <ui:define name="corpo">
+    <h:body>
+      <h2>Estagios</h2>
+      <h:form style="display: flex; flex-direction: column">
+        <h:dataTable
+          style="margin: 10px; width: max-content"
+          value="#{listarEstagiosBean.estagios}"
+          var="estagio"
+          border="1"
+          cellspacing="0"
+          cellpadding="2"
+        >
+          <h:column>
+            <f:facet name="header">
+              <h:outputText value="Aluno" />
+            </f:facet>
+            <h:outputText value="#{estagio.aluno.nome}" />
+          </h:column>
+          <h:column>
+            <f:facet name="header">
+              <h:outputText value="Empresa" />
+            </f:facet>
+            <h:outputText value="#{estagio.empresa.nome}" />
+          </h:column>
+          <h:column>
+            <f:facet name="header">
+              <h:outputText value="Orientador" />
+            </f:facet>
+            <h:outputText value="#{estagio.orientador.nome}" />
+          </h:column>
+          <h:column>
+            <f:facet name="header">
+              <h:outputText value="Data Início" />
+            </f:facet>
+            <h:outputText value="#{estagio.inicioEstagio}" />
+          </h:column>
+          <h:column>
+            <f:facet name="header">
+              <h:outputText value="Data Fim" />
+            </f:facet>
+            <h:outputText value="#{estagio.fimEstagio}" />
+          </h:column>
+          <h:column>
+            <f:facet name="header">
+              <h:outputText value="Carga Horária" />
+            </f:facet>
+            <h:outputText value="#{estagio.cargaHoraria}" />
+          </h:column>
+          <h:column>
+            <f:facet name="header">
+              <h:outputText value="Status" />
+            </f:facet>
+            <h:outputText value="#{estagio.status}" />
+          </h:column>
+          <h:column>
+            <f:facet name="header">
+              <h:outputText value="Opções" />
+            </f:facet>
+            <h:commandButton
+              value="Editar"
+              action="#{listarEstagiosBean.editar(estagio.id)}"
+            />
+            <h:commandButton
+              value="Excluir"
+              action="#{listarEstagiosBean.excluir(estagio)}"
+            >
+            </h:commandButton>
+          </h:column>
+        </h:dataTable>
+
+        <h:commandLink
+          style="margin: 10px"
+          value="Cadastrar estagio"
+          action="cadastro-estagio?faces-redirect=true"
+        />
+        <br />
+      </h:form>
+    </h:body>
+  </ui:define>
+</ui:composition>
